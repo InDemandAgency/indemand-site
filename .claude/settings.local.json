@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(cp /Users/ege/Desktop/claude-test/indemand-site/media/indemand_logo.png /Users/ege/Desktop/claude-test/indemand-site/public/indemand-logo.png)",
+      "Bash(mkdir -p /Users/ege/Desktop/claude-test/indemand-site/components)",
+      "Bash(mkdir -p /Users/ege/Desktop/claude-test/indemand-site/public /Users/ege/Desktop/claude-test/indemand-site/components)",
+      "Bash(cp \"/Users/ege/Desktop/claude-test/indemand-site/media/indemand_logo.png\" /Users/ege/Desktop/claude-test/indemand-site/public/indemand-logo.png)",
+      "Bash(npm run:*)",
+      "Read(//tmp/**)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(grep -o \"Tire-kickers\\\\|We get it\\\\|competing on price\\\\|\\\\$56K\\\\|\\\\$18K\\\\|\\\\$12K\\\\|\\\\$22K\\\\|Stuck\\\\|TrendingDown\\\\|TrendingUp\")",
+      "Bash(grep -o \"Tire-kickers\\\\|textShadow\\\\|PlateauIcon\\\\|FileText\\\\|CreditCard\\\\|PhoneOff\\\\|\\\\$56K\\\\|\\\\$18K\\\\|\\\\$12K\\\\|\\\\$22K\\\\|svg\\\\|viewBox\")",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
