@@ -51,7 +51,11 @@ export default function AnalyticsTracker() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
 
+    let sent = false;
     const sendSession = () => {
+      if (sent) return;
+      sent = true;
+
       const s = (window as any).__session;
       if (!s) return;
 

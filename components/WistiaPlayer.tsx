@@ -10,67 +10,77 @@ interface WistiaPlayerProps {
   trackAs?: "vsl" | "sp1" | "sp2";
 }
 
-declare global {
-  interface Window {
-    _wq: any[];
-  }
-}
-
 export default function WistiaPlayer({ mediaId, aspect, trackAs }: WistiaPlayerProps) {
   useEffect(() => {
     if (!trackAs) return;
 
-    window._wq = window._wq || [];
     const milestonesFired = new Set<number>();
+    let bound = false;
 
-    window._wq.push({
-      id: mediaId,
-      onReady: (video: any) => {
-        video.bind("play", () => {
-          const s = (window as any).__session;
-          track("video_play", { type: trackAs });
-          if (!s) return;
-          if (trackAs === "vsl") s.vslPlayed = true;
-          if (trackAs === "sp1") s.sp1Played = true;
-          if (trackAs === "sp2") s.sp2Played = true;
-        });
+    const bindEvents = (video: any) => {
+      video.bind("play", () => {
+        const s = (window as any).__session;
+        track("video_play", { type: trackAs });
+        if (!s) return;
+        if (trackAs === "vsl") s.vslPlayed = true;
+        if (trackAs === "sp1") s.sp1Played = true;
+        if (trackAs === "sp2") s.sp2Played = true;
+      });
 
-        video.bind("percentwatchedchanged", (pct: number) => {
-          const p = Math.floor(pct * 100);
-          const s = (window as any).__session;
-          if (!s) return;
+      video.bind("percentwatchedchanged", (pct: number) => {
+        const p = Math.floor(pct * 100);
+        const s = (window as any).__session;
+        if (!s) return;
 
-          if (trackAs === "vsl") {
-            [25, 50, 75, 90].forEach((m) => {
-              if (p >= m && !milestonesFired.has(m)) {
-                milestonesFired.add(m);
-                if (m === 25) s.vslHit25 = true;
-                if (m === 50) s.vslHit50 = true;
-                if (m === 75) s.vslHit75 = true;
-                if (m === 90) s.vslHit90 = true;
-                track("vsl_progress", { percent: m });
-              }
-            });
-          }
+        if (trackAs === "vsl") {
+          [25, 50, 75, 90].forEach((m) => {
+            if (p >= m && !milestonesFired.has(m)) {
+              milestonesFired.add(m);
+              if (m === 25) s.vslHit25 = true;
+              if (m === 50) s.vslHit50 = true;
+              if (m === 75) s.vslHit75 = true;
+              if (m === 90) s.vslHit90 = true;
+              track("vsl_progress", { percent: m });
+            }
+          });
+        }
 
-          if (trackAs === "sp1" && p >= 50 && !s.sp1Hit50) {
-            s.sp1Hit50 = true;
-            track("sp1_progress", { percent: 50 });
-          }
+        if (trackAs === "sp1" && p >= 50 && !s.sp1Hit50) {
+          s.sp1Hit50 = true;
+          track("sp1_progress", { percent: 50 });
+        }
 
-          if (trackAs === "sp2" && p >= 50 && !s.sp2Hit50) {
-            s.sp2Hit50 = true;
-            track("sp2_progress", { percent: 50 });
-          }
-        });
+        if (trackAs === "sp2" && p >= 50 && !s.sp2Hit50) {
+          s.sp2Hit50 = true;
+          track("sp2_progress", { percent: 50 });
+        }
+      });
 
-        video.bind("end", () => {
-          const s = (window as any).__session;
-          track("video_completed", { type: trackAs });
-          if (s && trackAs === "vsl") s.vslCompleted = true;
-        });
-      },
-    });
+      video.bind("end", () => {
+        const s = (window as any).__session;
+        track("video_completed", { type: trackAs });
+        if (s && trackAs === "vsl") s.vslCompleted = true;
+      });
+    };
+
+    // Poll for Wistia.api(mediaId) — more reliable than _wq with the new web component
+    let attempts = 0;
+    const interval = setInterval(() => {
+      attempts++;
+      if (attempts > 60 || bound) { clearInterval(interval); return; }
+
+      const W = (window as any).Wistia;
+      if (!W) return;
+
+      const video = W.api(mediaId);
+      if (!video) return;
+
+      bound = true;
+      clearInterval(interval);
+      bindEvents(video);
+    }, 500);
+
+    return () => clearInterval(interval);
   }, [mediaId, trackAs]);
 
   return (
