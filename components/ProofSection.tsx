@@ -111,7 +111,10 @@ export default function ProofSection() {
 
         {/* Video testimonials */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-14 max-w-2xl mx-auto" data-animate data-delay="100">
-          {["m34seci0bu", "lizxmjdusj"].map((mediaId) => (
+          {[
+            { id: "m34seci0bu", trackAs: "sp1" as const },
+            { id: "lizxmjdusj", trackAs: "sp2" as const },
+          ].map(({ id: mediaId, trackAs }) => (
             <div
               key={mediaId}
               className="relative rounded-xl overflow-hidden border border-border-subtle"
@@ -121,7 +124,7 @@ export default function ProofSection() {
               }}
             >
               <div className="relative w-full" style={{ paddingTop: "177.78%" }}>
-                <WistiaPlayer mediaId={mediaId} aspect={9 / 16} />
+                <WistiaPlayer mediaId={mediaId} aspect={9 / 16} trackAs={trackAs} />
               </div>
             </div>
           ))}

@@ -73,7 +73,7 @@ export default function Hero() {
         >
           {/* 16:9 aspect ratio wrapper */}
           <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
-            <WistiaPlayer mediaId="edbcpyqw7i" aspect={16 / 9} />
+            <WistiaPlayer mediaId="edbcpyqw7i" aspect={16 / 9} trackAs="vsl" />
           </div>
         </div>
 

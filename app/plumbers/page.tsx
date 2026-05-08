@@ -6,10 +6,12 @@ import HowWeSolve from "@/components/HowWeSolve";
 import HowItWorks from "@/components/HowItWorks";
 import NinetyDays from "@/components/NinetyDays";
 import Footer from "@/components/Footer";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 export default function PlumbersPage() {
   return (
     <main>
+      <AnalyticsTracker />
       <Hero />
       <WhoItsFor />
       <ProofSection />
