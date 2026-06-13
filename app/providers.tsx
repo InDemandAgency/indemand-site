@@ -19,6 +19,12 @@ function PageviewTracker() {
 
   useEffect(() => {
     posthog.capture('$pageview', { $current_url: window.location.href })
+
+    const handlePageleave = () => {
+      posthog.capture('$pageleave', { $current_url: window.location.href })
+    }
+    window.addEventListener('beforeunload', handlePageleave)
+    return () => window.removeEventListener('beforeunload', handlePageleave)
   }, [pathname, searchParams])
 
   return null
