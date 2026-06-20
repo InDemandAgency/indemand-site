@@ -178,9 +178,9 @@ const priceShopperBullets = [
 ];
 
 const bottleneckBullets = [
-  "A homeowner texts back but you're on a job. By the time you respond three hours later, they already called someone else",
+  "A customer texts back but you're on a job. By the time you respond three hours later, they already called someone else",
   "Leads come in but nobody follows up fast enough to convert them",
-  "No system for staying in front of people who aren't ready today but will need a plumber in 2 months",
+  "No system for staying in front of people who aren't ready today but will need you in 2 months",
   "You're working IN the business 12 hours a day with zero time to work ON it",
 ];
 
@@ -202,11 +202,11 @@ export default function ThreeProblems() {
         {/* Section headline */}
         <div className="mb-12 md:mb-16">
           <h2 className="text-3xl font-black text-white leading-tight mb-3 sm:text-4xl md:text-5xl" data-animate>
-            3 Problems Keeping Plumbing Companies{" "}
+            3 Problems Keeping Good Businesses{" "}
             <span className="font-black text-red-500">Stuck</span>
           </h2>
           <p className="text-text-muted text-base md:text-lg" data-animate data-delay="100">
-            After working with dozens of plumbing companies, we know this pattern by heart.
+            After working with dozens of businesses like yours, we know this pattern by heart.
           </p>
         </div>
 
@@ -216,14 +216,14 @@ export default function ThreeProblems() {
           <ProblemHeader number="1" title="No Predictable Way to Get Qualified Customers" />
           <div className="space-y-4 text-text-muted text-base leading-relaxed mb-8 max-w-3xl">
             <p data-animate>
-              Most plumbers rely on referrals, word-of-mouth, and repeat customers. And while those are great — they&apos;re{" "}
+              Most owners rely on referrals, word-of-mouth, and repeat customers. And while those are great — they&apos;re{" "}
               <span className="text-red-500 font-bold">not predictable</span>.
             </p>
             <p data-animate data-delay="80">
-              One month you&apos;re booked out 6 weeks. The next? Your guys are sitting around waiting for the phone to ring. You can&apos;t hire, you can&apos;t plan, and you definitely can&apos;t scale.
+              One month you&apos;re booked out 6 weeks. The next? Your crew is sitting around waiting for the phone to ring. You can&apos;t hire, you can&apos;t plan, and you definitely can&apos;t scale.
             </p>
             <p data-animate data-delay="160">
-              The difference between a $500K plumbing company and a $2M plumbing company? A system that puts qualified jobs on your calendar every single week — not just when someone happens to mention your name.
+              The difference between a $500K business and a $2M business? A system that puts qualified jobs on your calendar every single week — not just when someone happens to mention your name.
             </p>
           </div>
 
@@ -250,15 +250,15 @@ export default function ThreeProblems() {
         {/* Problem 2 */}
         <div className="mb-16 md:mb-20">
           <div className="w-12 h-0.5 bg-accent mb-4" />
-          <ProblemHeader number="2" title='Price-Shoppers & "Just Give Me a Number" Homeowners' />
+          <ProblemHeader number="2" title='Price-Shoppers & "Just Give Me a Number" Customers' />
           <div className="space-y-4 text-text-muted text-base leading-relaxed mb-6 max-w-3xl">
             <p data-animate>
               If your leads are coming from generic ads or shared lead platforms,{" "}
               <span className="text-red-500 font-bold">you&apos;re competing on price</span>{" "}
-              — not the quality of work you actually deliver. No plumber should be in that position.
+              — not the quality of work you actually deliver. No business that does great work should be in that position.
             </p>
             <p data-animate data-delay="80">
-              These homeowners are getting 3–5 quotes. They don&apos;t care about your craftsmanship, your reviews, or your warranty. They just want the lowest number.
+              These customers are getting 3–5 quotes. They don&apos;t care about your craftsmanship, your reviews, or your warranty. They just want the lowest number.
             </p>
           </div>
 
@@ -287,7 +287,7 @@ export default function ThreeProblems() {
           </div>
 
           <p className="mt-6 text-text-muted text-base leading-relaxed max-w-3xl" data-animate>
-            The homeowners on your calendar were qualified by our team, responded because they have a real need, and are booked to talk to you. Not you and four other companies. We don&apos;t put you in the competition — we put you above it.
+            The customers on your calendar were qualified by our team, responded because they have a real need, and are booked to talk to you. Not you and four other companies. We don&apos;t put you in the competition — we put you above it.
           </p>
         </div>
 
@@ -297,10 +297,10 @@ export default function ThreeProblems() {
           <ProblemHeader number="3" title="You're Running the Business AND Trying to Grow It" />
           <div className="space-y-4 text-text-muted text-base leading-relaxed mb-6 max-w-3xl">
             <p data-animate>
-              You&apos;re the one dispatching techs, managing the crew, handling callbacks, doing estimates, dealing with suppliers — and somewhere in between all of that, you&apos;re supposed to be the marketing department too?
+              You&apos;re the one dispatching, managing the crew, handling callbacks, doing estimates, dealing with suppliers — and somewhere in between all of that, you&apos;re supposed to be the marketing department too?
             </p>
             <p data-animate data-delay="80">
-              There aren&apos;t enough hours in the day. And the things that would actually grow your business — responding fast, booking appointments, staying top of mind — are the first to slip when you&apos;re under a house at 2pm.
+              There aren&apos;t enough hours in the day. And the things that would actually grow your business — responding fast, booking appointments, staying top of mind — are the first to slip when you&apos;re out on a job at 2pm.
             </p>
           </div>
 

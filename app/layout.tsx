@@ -16,7 +16,7 @@ const geistSans = localFont({
 export const metadata: Metadata = {
   title: "InDemand Agency — We Don't Sell Leads. We Send Buyers.",
   description:
-    "InDemand installs a complete qualified buyer machine for US plumbing companies. From the first ad to the signed contract — we build it, run it, and scale it.",
+    "InDemand installs a complete qualified buyer machine for service businesses across industries. From the first conversation to the signed contract — we build it, run it, and scale it.",
 };
 
 export default function RootLayout({

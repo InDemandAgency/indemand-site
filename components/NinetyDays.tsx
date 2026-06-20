@@ -72,13 +72,13 @@ const phases = [
   {
     tag: "Day 0–7",
     title: "System Installation",
-    body: "We build your custom funnel, set up your ad campaigns, configure your CRM, and map out your 90-day strategy plan in flowcharts. Everything is tailored to your market, your services, and your goals.",
+    body: "We build your custom funnel, set up your campaigns and outreach, configure your CRM, and map out your 90-day strategy plan in flowcharts. Everything is tailored to your market, your services, and your goals.",
     stats: null,
   },
   {
     tag: "Week 2–4",
     title: "First Appointments Rolling In",
-    body: "Campaigns go live. Homeowners in your area start responding. You start seeing real, qualified appointments.",
+    body: "Campaigns go live. Customers in your area start responding. You start seeing real, qualified appointments.",
     stats: [
       { label: "Booked Appointments", value: "8–15" },
       { label: "Pipeline Value", value: "$11K–$47K" },
@@ -220,7 +220,7 @@ export default function NinetyDays() {
           data-animate
           data-delay="100"
         >
-          <span className="text-white font-semibold">*</span> These results are based on data from 50+ plumbing company partners. Results vary based on market, service type, average job value, and your team&apos;s ability to close. Some of our partners have generated over $500K in pipeline revenue by month two. We&apos;ll give you an honest projection based on your specific situation during our strategy call.
+          <span className="text-white font-semibold">*</span> These results are based on data from 50+ partners across industries. Results vary based on market, service type, average job value, and your team&apos;s ability to close. Some of our partners have generated over $500K in pipeline revenue by month two. We&apos;ll give you an honest projection based on your specific situation during our strategy call.
         </p>
       </div>
     </section>

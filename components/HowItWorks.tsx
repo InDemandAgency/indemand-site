@@ -130,13 +130,13 @@ type StepIcon = () => JSX.Element;
 const steps: { icon: StepIcon; label: string; body: string }[] = [
   {
     icon: TargetingAnimated,
-    label: "Ads Management",
-    body: "We create and manage high-converting ad campaigns that attract qualified homeowners in your area.",
+    label: "Demand Generation",
+    body: "We don't wait for customers to come looking. We go out and create demand — targeted ad campaigns and direct outreach that put your business in front of ready-to-buy customers in your area. (It's the same kind of system that put us on your radar.)",
   },
   {
     icon: FunnelAnimated,
-    label: "Profit Funnel",
-    body: "Custom-built funnel that pre-qualifies and educates homeowners before they ever talk to you.",
+    label: "Conversion Funnel",
+    body: "A custom-built funnel that pre-qualifies and educates your customers before they ever talk to you.",
   },
   {
     icon: PhoneBookAnimated,

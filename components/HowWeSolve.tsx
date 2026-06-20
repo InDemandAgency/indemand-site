@@ -222,7 +222,7 @@ const genericSteps: FlowStep[] = [
 
 const indemandSteps: FlowStep[] = [
   { icon: Target,         label: "Targeted Ad" },
-  { icon: UserCheck,      label: "Qualified Homeowner" },
+  { icon: UserCheck,      label: "Qualified Customer" },
   { icon: CalendarCheck,  label: "Pre-Sold Appointment" },
   { icon: FileCheck,      label: "Signed Job" },
 ];
@@ -244,7 +244,7 @@ export default function HowWeSolve() {
             Most marketing companies run ads, send you &ldquo;leads,&rdquo; and disappear. They get paid whether you close or not. That model is broken.
           </p>
           <p data-animate data-delay="180">
-            InDemand is different. We don&apos;t generate leads — we install a complete qualified buyer engine around your business. From the first ad to the signed contract, we build it, run it, scale it, and optimize it. Your only job is showing up and closing.
+            InDemand is different. We don&apos;t generate leads — we install a complete qualified buyer engine around your business. From the first touch to the signed contract, we build it, run it, scale it, and optimize it. Your only job is showing up and closing.
           </p>
         </div>
 
@@ -372,14 +372,14 @@ export default function HowWeSolve() {
                     <animate attributeName="opacity" values="0;0.6;0" dur="2.5s" begin="0.4s" repeatCount="indefinite" />
                   </circle>
                 </svg>
-                <p className="text-text-muted text-sm leading-relaxed">Positioned as the premium, no-brainer choice homeowners want to hire</p>
+                <p className="text-text-muted text-sm leading-relaxed">Positioned as the premium, no-brainer choice customers want to hire</p>
               </div>
             </div>
           </div>
         </div>
 
         <p className="text-text-muted text-base md:text-lg leading-relaxed max-w-3xl" data-animate>
-          When homeowners come to you through InDemand, they&apos;ve been educated on your value, already seen your work, read your reviews, and understand why you&apos;re worth more. You don&apos;t have to compete on price —{" "}
+          When customers come to you through InDemand, they&apos;ve been educated on your value, already seen your work, read your reviews, and understand why you&apos;re worth more. You don&apos;t have to compete on price —{" "}
           <span className="text-accent font-semibold">because we&apos;ve already sold them on your value before they ever call you.</span>
         </p>
       </div>
