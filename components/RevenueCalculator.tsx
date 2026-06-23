@@ -1,12 +1,63 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 const WEEKS_PER_MONTH = 4.33;
-const WORKING_DAYS_PER_MONTH = 5 * WEEKS_PER_MONTH; // 21.65
+const WORKING_DAYS_PER_MONTH = 5 * WEEKS_PER_MONTH;
 
 function fmt(n: number): string {
   return "$" + Math.round(n).toLocaleString("en-US");
+}
+
+function useCountUp(target: number | null, duration = 700): number | null {
+  const [display, setDisplay] = useState<number | null>(null);
+  const currentRef = useRef<number | null>(null);
+  const rafRef = useRef<number>();
+
+  useEffect(() => {
+    if (target === null) {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      setDisplay(null);
+      currentRef.current = null;
+      return;
+    }
+
+    const from = currentRef.current ?? 0;
+    const to = target;
+
+    if (Math.round(from) === Math.round(to)) {
+      currentRef.current = to;
+      setDisplay(to);
+      return;
+    }
+
+    const startTime = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const val = from + (to - from) * eased;
+      currentRef.current = val;
+      setDisplay(val);
+
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(tick);
+      } else {
+        currentRef.current = to;
+        setDisplay(to);
+      }
+    };
+
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [target, duration]);
+
+  return display;
 }
 
 type Field = "avgRevenue" | "currentJobs" | "desiredJobs" | "hoursPerDay";
@@ -40,22 +91,34 @@ export default function RevenueCalculator() {
   const hasDes = inputs.desiredJobs !== "" && !isNaN(des) && des > 0;
   const hasHrs = inputs.hoursPerDay !== "" && !isNaN(hrs) && hrs > 0;
 
-  const revenueWithID = hasAvg && hasDes ? des * avg * WEEKS_PER_MONTH : null;
-  const leftMonthly =
+  const revenueWithIDRaw = hasAvg && hasDes ? des * avg * WEEKS_PER_MONTH : null;
+  const leftMonthlyRaw =
     hasAvg && hasCur && hasDes
       ? Math.max(des - cur, 0) * avg * WEEKS_PER_MONTH
       : null;
-  const leftYearly = leftMonthly !== null ? leftMonthly * 12 : null;
+  const leftYearlyRaw = leftMonthlyRaw !== null ? leftMonthlyRaw * 12 : null;
 
   const monthlyHours = hasHrs ? hrs * WORKING_DAYS_PER_MONTH : null;
-  const rphCurrent =
+  const rphCurrentRaw =
     hasAvg && hasCur && monthlyHours !== null
       ? (cur * avg * WEEKS_PER_MONTH) / monthlyHours
       : null;
-  const rphWithID =
-    revenueWithID !== null && monthlyHours !== null
-      ? revenueWithID / monthlyHours
+  const rphWithIDRaw =
+    revenueWithIDRaw !== null && monthlyHours !== null
+      ? revenueWithIDRaw / monthlyHours
       : null;
+  const multiplierRaw =
+    rphCurrentRaw !== null && rphCurrentRaw > 0 && rphWithIDRaw !== null
+      ? rphWithIDRaw / rphCurrentRaw
+      : null;
+
+  // Animated display values
+  const revenueWithID = useCountUp(revenueWithIDRaw);
+  const leftMonthly = useCountUp(leftMonthlyRaw);
+  const leftYearly = useCountUp(leftYearlyRaw);
+  const rphCurrent = useCountUp(rphCurrentRaw);
+  const rphWithID = useCountUp(rphWithIDRaw);
+  const multiplier = useCountUp(multiplierRaw);
 
   const allFilled = hasAvg && hasCur && hasDes;
   const hourlyReady = rphCurrent !== null && rphWithID !== null;
@@ -165,7 +228,7 @@ export default function RevenueCalculator() {
           <span className="font-normal normal-case tracking-normal">/mo</span>
         </p>
         <p
-          className="text-3xl font-black transition-all duration-300"
+          className="text-3xl font-black tabular-nums transition-colors duration-300"
           style={{ color: revenueWithID !== null ? "#00D4FF" : "#1E2A42" }}
         >
           {revenueWithID !== null ? fmt(revenueWithID) : "—"}
@@ -198,10 +261,10 @@ export default function RevenueCalculator() {
           {/* Monthly */}
           <div>
             <p
-              className="text-2xl sm:text-3xl font-black transition-all duration-300"
+              className="text-2xl sm:text-3xl font-black tabular-nums transition-colors duration-300"
               style={{
                 color:
-                  leftMonthly !== null && leftMonthly > 0
+                  leftMonthly !== null && leftMonthlyRaw! > 0
                     ? "#FCA5A5"
                     : "#1E2A42",
               }}
@@ -219,10 +282,12 @@ export default function RevenueCalculator() {
           {/* Yearly — largest number on page */}
           <div>
             <p
-              className="text-4xl sm:text-5xl md:text-6xl font-black leading-none transition-all duration-300"
+              className="text-4xl sm:text-5xl md:text-6xl font-black leading-none tabular-nums transition-colors duration-300"
               style={{
                 color:
-                  leftYearly !== null && leftYearly > 0 ? "#FFFFFF" : "#1E2A42",
+                  leftYearly !== null && leftYearlyRaw! > 0
+                    ? "#FFFFFF"
+                    : "#1E2A42",
               }}
             >
               {leftYearly !== null ? fmt(leftYearly) : "—"}
@@ -242,9 +307,7 @@ export default function RevenueCalculator() {
         className="rounded-xl border p-6 mb-4 transition-all duration-500"
         style={{
           background: hourlyReady ? "#0B1628" : "#0F1729",
-          borderColor: hourlyReady
-            ? "rgba(0,212,255,0.18)"
-            : "#1E2A42",
+          borderColor: hourlyReady ? "rgba(0,212,255,0.18)" : "#1E2A42",
           boxShadow: hourlyReady
             ? "0 0 0 1px rgba(0,212,255,0.08), 0 8px 40px rgba(0,0,0,0.4)"
             : "0 4px 20px rgba(0,0,0,0.3)",
@@ -264,7 +327,7 @@ export default function RevenueCalculator() {
               Without InDemand
             </p>
             <p
-              className="text-2xl sm:text-3xl font-black transition-all duration-300"
+              className="text-2xl sm:text-3xl font-black tabular-nums transition-colors duration-300"
               style={{ color: rphCurrent !== null ? "#8B9AAF" : "#1E2A42" }}
             >
               {rphCurrent !== null ? fmt(rphCurrent) : "—"}
@@ -276,22 +339,19 @@ export default function RevenueCalculator() {
           <div
             className="rounded-lg p-4 border transition-all duration-300"
             style={{
-              background: rphWithID !== null
-                ? "rgba(0,212,255,0.06)"
-                : "rgba(0,0,0,0.25)",
-              borderColor: rphWithID !== null
-                ? "rgba(0,212,255,0.25)"
-                : "#1E2A42",
-              boxShadow: rphWithID !== null
-                ? "0 0 16px rgba(0,212,255,0.1)"
-                : "none",
+              background:
+                rphWithID !== null ? "rgba(0,212,255,0.06)" : "rgba(0,0,0,0.25)",
+              borderColor:
+                rphWithID !== null ? "rgba(0,212,255,0.25)" : "#1E2A42",
+              boxShadow:
+                rphWithID !== null ? "0 0 16px rgba(0,212,255,0.1)" : "none",
             }}
           >
             <p className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">
               With InDemand
             </p>
             <p
-              className="text-2xl sm:text-3xl font-black transition-all duration-300"
+              className="text-2xl sm:text-3xl font-black tabular-nums transition-colors duration-300"
               style={{ color: rphWithID !== null ? "#00D4FF" : "#1E2A42" }}
             >
               {rphWithID !== null ? fmt(rphWithID) : "—"}
@@ -301,11 +361,11 @@ export default function RevenueCalculator() {
         </div>
 
         {/* Multiplier callout */}
-        {hourlyReady && rphCurrent! > 0 && (
+        {hourlyReady && rphCurrentRaw! > 0 && multiplier !== null && (
           <p className="mt-4 text-sm text-text-muted text-center">
             Same hours. Same sweat.{" "}
-            <span className="text-white font-bold">
-              {(rphWithID! / rphCurrent!).toFixed(1)}× more revenue per hour.
+            <span className="text-white font-bold tabular-nums">
+              {multiplier.toFixed(1)}× more revenue per hour.
             </span>
           </p>
         )}
