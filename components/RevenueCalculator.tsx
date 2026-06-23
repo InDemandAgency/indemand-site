@@ -8,12 +8,11 @@ function fmt(n: number): string {
   return "$" + Math.round(n).toLocaleString("en-US");
 }
 
-type Field = "avgRevenue" | "currentJobs" | "profitPct" | "desiredJobs";
+type Field = "avgRevenue" | "currentJobs" | "desiredJobs";
 
 interface Inputs {
   avgRevenue: string;
   currentJobs: string;
-  profitPct: string;
   desiredJobs: string;
 }
 
@@ -21,7 +20,6 @@ export default function RevenueCalculator() {
   const [inputs, setInputs] = useState<Inputs>({
     avgRevenue: "",
     currentJobs: "",
-    profitPct: "",
     desiredJobs: "",
   });
 
@@ -31,23 +29,20 @@ export default function RevenueCalculator() {
 
   const avg = parseFloat(inputs.avgRevenue);
   const cur = parseFloat(inputs.currentJobs);
-  const pct = parseFloat(inputs.profitPct);
   const des = parseFloat(inputs.desiredJobs);
 
   const hasAvg = inputs.avgRevenue !== "" && !isNaN(avg) && avg > 0;
   const hasCur = inputs.currentJobs !== "" && !isNaN(cur);
-  const hasPct = inputs.profitPct !== "" && !isNaN(pct) && pct >= 0 && pct <= 100;
   const hasDes = inputs.desiredJobs !== "" && !isNaN(des) && des > 0;
 
   const revenueWithID = hasAvg && hasDes ? des * avg * WEEKS_PER_MONTH : null;
-  const profitWithID = revenueWithID !== null && hasPct ? revenueWithID * (pct / 100) : null;
   const leftMonthly =
-    hasAvg && hasCur && hasPct && hasDes
-      ? Math.max(des - cur, 0) * avg * WEEKS_PER_MONTH * (pct / 100)
+    hasAvg && hasCur && hasDes
+      ? Math.max(des - cur, 0) * avg * WEEKS_PER_MONTH
       : null;
   const leftYearly = leftMonthly !== null ? leftMonthly * 12 : null;
 
-  const allFilled = hasAvg && hasCur && hasPct && hasDes;
+  const allFilled = hasAvg && hasCur && hasDes;
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -62,7 +57,7 @@ export default function RevenueCalculator() {
       </div>
 
       {/* Input grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {/* Average job revenue */}
         <div>
           <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider">
@@ -78,8 +73,7 @@ export default function RevenueCalculator() {
               step="100"
               value={inputs.avgRevenue}
               onChange={(e) => set("avgRevenue", e.target.value)}
-              placeholder=""
-              className="w-full bg-bg-elevated border border-border-subtle rounded-lg pl-8 pr-4 py-3.5 text-white text-base font-semibold placeholder-transparent focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="w-full bg-bg-elevated border border-border-subtle rounded-lg pl-8 pr-4 py-3.5 text-white text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.3)" }}
             />
           </div>
@@ -88,7 +82,7 @@ export default function RevenueCalculator() {
         {/* Current jobs per week */}
         <div>
           <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider">
-            Current jobs per week
+            Current jobs / week
           </label>
           <input
             type="number"
@@ -96,39 +90,15 @@ export default function RevenueCalculator() {
             step="1"
             value={inputs.currentJobs}
             onChange={(e) => set("currentJobs", e.target.value)}
-            placeholder=""
-            className="w-full bg-bg-elevated border border-border-subtle rounded-lg px-4 py-3.5 text-white text-base font-semibold placeholder-transparent focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="w-full bg-bg-elevated border border-border-subtle rounded-lg px-4 py-3.5 text-white text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.3)" }}
           />
-        </div>
-
-        {/* Average profit per job */}
-        <div>
-          <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider">
-            Average profit per job (%)
-          </label>
-          <div className="relative">
-            <input
-              type="number"
-              min="0"
-              max="100"
-              step="1"
-              value={inputs.profitPct}
-              onChange={(e) => set("profitPct", e.target.value)}
-              placeholder=""
-              className="w-full bg-bg-elevated border border-border-subtle rounded-lg pl-4 pr-10 py-3.5 text-white text-base font-semibold placeholder-transparent focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-              style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.3)" }}
-            />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted font-semibold select-none">
-              %
-            </span>
-          </div>
         </div>
 
         {/* Desired jobs per week */}
         <div>
           <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider">
-            Desired jobs per week
+            Desired jobs / week
           </label>
           <input
             type="number"
@@ -136,56 +106,31 @@ export default function RevenueCalculator() {
             step="1"
             value={inputs.desiredJobs}
             onChange={(e) => set("desiredJobs", e.target.value)}
-            placeholder=""
-            className="w-full bg-bg-elevated border border-border-subtle rounded-lg px-4 py-3.5 text-white text-base font-semibold placeholder-transparent focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="w-full bg-bg-elevated border border-border-subtle rounded-lg px-4 py-3.5 text-white text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.3)" }}
           />
         </div>
       </div>
 
-      {/* Secondary metric cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-        {/* Revenue with InDemand */}
-        <div
-          className="rounded-xl border border-border-subtle bg-bg-elevated p-5 transition-all duration-300"
-          style={{
-            boxShadow: revenueWithID !== null
-              ? "0 0 0 1px rgba(0,212,255,0.1), 0 4px 20px rgba(0,0,0,0.4)"
-              : "0 4px 20px rgba(0,0,0,0.3)",
-          }}
+      {/* Revenue with InDemand card */}
+      <div
+        className="rounded-xl border border-border-subtle bg-bg-elevated p-5 mb-4 transition-all duration-300"
+        style={{
+          boxShadow: revenueWithID !== null
+            ? "0 0 0 1px rgba(0,212,255,0.1), 0 4px 20px rgba(0,0,0,0.4)"
+            : "0 4px 20px rgba(0,0,0,0.3)",
+        }}
+      >
+        <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-2">
+          Revenue with InDemand{" "}
+          <span className="font-normal normal-case tracking-normal">/mo</span>
+        </p>
+        <p
+          className="text-3xl font-black transition-all duration-300"
+          style={{ color: revenueWithID !== null ? "#00D4FF" : "#1E2A42" }}
         >
-          <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-2">
-            Revenue with InDemand{" "}
-            <span className="text-text-muted font-normal normal-case tracking-normal">/mo</span>
-          </p>
-          <p
-            className="text-3xl font-black transition-all duration-300"
-            style={{ color: revenueWithID !== null ? "#00D4FF" : "#1E2A42" }}
-          >
-            {revenueWithID !== null ? fmt(revenueWithID) : "—"}
-          </p>
-        </div>
-
-        {/* Profit with InDemand */}
-        <div
-          className="rounded-xl border border-border-subtle bg-bg-elevated p-5 transition-all duration-300"
-          style={{
-            boxShadow: profitWithID !== null
-              ? "0 0 0 1px rgba(0,212,255,0.1), 0 4px 20px rgba(0,0,0,0.4)"
-              : "0 4px 20px rgba(0,0,0,0.3)",
-          }}
-        >
-          <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-2">
-            Profit with InDemand{" "}
-            <span className="text-text-muted font-normal normal-case tracking-normal">/mo</span>
-          </p>
-          <p
-            className="text-3xl font-black transition-all duration-300"
-            style={{ color: profitWithID !== null ? "#00D4FF" : "#1E2A42" }}
-          >
-            {profitWithID !== null ? fmt(profitWithID) : "—"}
-          </p>
-        </div>
+          {revenueWithID !== null ? fmt(revenueWithID) : "—"}
+        </p>
       </div>
 
       {/* Hero output — Money Left on the Table */}
