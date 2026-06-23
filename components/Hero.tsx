@@ -10,7 +10,7 @@ export default function Hero() {
         aria-hidden="true"
       >
         <div
-          className="absolute left-1/2 top-0 -translate-x-1/2 w-[900px] h-[600px] rounded-full opacity-[0.07]"
+          className="absolute left-1/2 top-0 -translate-x-1/2 w-[900px] h-[600px] rounded-full opacity-[0.06]"
           style={{
             background:
               "radial-gradient(ellipse at center, #00D4FF 0%, transparent 70%)",
@@ -28,6 +28,34 @@ export default function Hero() {
             height={48}
             priority
           />
+        </div>
+
+        {/* Badge */}
+        <div
+          className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border mb-8"
+          style={{
+            background: "rgba(0,212,255,0.06)",
+            borderColor: "rgba(0,212,255,0.25)",
+          }}
+        >
+          <span
+            className="w-2 h-2 rounded-full bg-accent flex-shrink-0"
+            style={{ boxShadow: "0 0 8px rgba(0,212,255,0.8)" }}
+          />
+          <span className="text-sm font-semibold text-accent tracking-wide">
+            Free revenue estimate — no sign-up required
+          </span>
+        </div>
+
+        {/* Headline */}
+        <div className="text-center max-w-xl mb-14">
+          <h1 className="text-3xl sm:text-4xl font-black text-white leading-tight mb-3">
+            Find out exactly how much your business is{" "}
+            <span className="text-accent">leaving on the table.</span>
+          </h1>
+          <p className="text-text-muted text-base sm:text-lg">
+            Plug in your real numbers. This takes 30 seconds.
+          </p>
         </div>
 
         {/* Divider */}
