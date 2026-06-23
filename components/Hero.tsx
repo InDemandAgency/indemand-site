@@ -43,7 +43,7 @@ export default function Hero() {
             style={{ boxShadow: "0 0 8px rgba(0,212,255,0.8)" }}
           />
           <span className="text-sm font-semibold text-accent tracking-wide">
-            Free revenue estimate — no sign-up required
+            Your strategy call is confirmed
           </span>
         </div>
 
