@@ -5,7 +5,6 @@ import ThreeProblems from "@/components/ThreeProblems";
 import HowWeSolve from "@/components/HowWeSolve";
 import HowItWorks from "@/components/HowItWorks";
 import NinetyDays from "@/components/NinetyDays";
-import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 
@@ -20,8 +19,7 @@ export default function RootPage() {
       <HowWeSolve />
       <HowItWorks />
       <NinetyDays />
-      <FinalCTA />
-      <Footer />
+<Footer />
     </main>
   );
 }
