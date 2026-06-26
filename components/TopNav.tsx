@@ -37,13 +37,13 @@ export default function TopNav() {
             ✦ Proof It Works
           </button>
 
-          {/* 6/10 — cyan-to-purple gradient, static glow */}
+          {/* 6/10 — indigo-to-purple gradient, white text readable */}
           <button
             onClick={() => scrollTo("what-to-expect")}
             className="px-4 py-2.5 rounded-lg text-sm font-bold text-white transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
             style={{
-              background: "linear-gradient(135deg, #00D4FF 0%, #A855F7 100%)",
-              boxShadow: "0 0 12px rgba(0,212,255,0.3), 0 0 24px rgba(168,85,247,0.15)",
+              background: "linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)",
+              boxShadow: "0 0 12px rgba(79,70,229,0.4), 0 0 24px rgba(124,58,237,0.2)",
             }}
           >
             What to Expect on the Call
