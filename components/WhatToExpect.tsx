@@ -145,35 +145,61 @@ export default function WhatToExpect() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
-            <div
-              className="rounded-xl border border-border-subtle p-5"
-              style={{ background: "rgba(0,212,255,0.04)" }}
-            >
-              <p
-                className="text-3xl font-black mb-1"
-                style={{ color: "#00D4FF" }}
+          {/* Worst case card — 1 minute */}
+          <div
+            className="rounded-xl border p-6 mb-3"
+            style={{
+              background: "linear-gradient(135deg, #0B1628 0%, #0F1729 100%)",
+              borderColor: "rgba(0,212,255,0.25)",
+              boxShadow: "0 0 0 1px rgba(0,212,255,0.08), 0 8px 32px rgba(0,0,0,0.35)",
+            }}
+          >
+            <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-3">
+              Worst case scenario
+            </p>
+            <div className="flex items-baseline gap-3 mb-3">
+              <span
+                className="text-5xl font-black"
+                style={{ color: "#00D4FF", textShadow: "0 0 24px rgba(0,212,255,0.4)" }}
               >
-                20 min
-              </p>
-              <p className="text-text-muted text-sm leading-relaxed">
-                Full walkthrough — we take you through every step of your plan together
-              </p>
+                1 min
+              </span>
+              <span className="text-text-muted font-semibold">on the call</span>
             </div>
-            <div
-              className="rounded-xl border border-border-subtle p-5"
-              style={{ background: "rgba(255,255,255,0.02)" }}
-            >
-              <p className="text-3xl font-black text-white mb-1">1 min</p>
-              <p className="text-text-muted text-sm leading-relaxed">
-                Grab your plan and implement it yourself — it&apos;s still yours to keep
-              </p>
-            </div>
+            <p className="text-white font-bold text-base mb-2">
+              You show up, grab your custom 35-day plan, and leave.
+            </p>
+            <p className="text-text-muted text-sm leading-relaxed">
+              A plan built specifically for your business, your market, your numbers —{" "}
+              <span className="text-accent font-semibold">yours to keep, free, forever.</span>{" "}
+              Whether we ever work together or not.
+            </p>
           </div>
 
-          <p className="text-text-muted text-base leading-relaxed">
-            Want us to build and run it for you? We&apos;ll show you how. If not, you keep the plan and we shake hands.{" "}
-            <span className="text-white font-bold">No pressure. No chasing.</span>
+          {/* Best case card — 20 minutes */}
+          <div
+            className="rounded-xl border border-border-subtle p-5 mb-5"
+            style={{ background: "rgba(255,255,255,0.02)" }}
+          >
+            <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-3">
+              Best case scenario
+            </p>
+            <div className="flex items-baseline gap-3 mb-3">
+              <span className="text-4xl font-black text-white">20 min</span>
+              <span className="text-text-muted font-semibold">on the call</span>
+            </div>
+            <p className="text-text-muted text-sm leading-relaxed">
+              We walk through the whole plan together. If you want us to build and run it for you, we&apos;ll show you exactly how.{" "}
+              <span className="text-white font-semibold">No pressure. No chasing.</span>{" "}
+              You decide.
+            </p>
+          </div>
+
+          <p
+            className="text-center text-sm font-bold"
+            style={{ color: "#00D4FF" }}
+          >
+            You literally cannot leave empty-handed.
           </p>
         </div>
 
