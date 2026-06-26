@@ -1,11 +1,7 @@
 import Hero from "@/components/Hero";
-import ProofSection from "@/components/ProofSection";
 import WhoItsFor from "@/components/WhoItsFor";
+import ProofSection from "@/components/ProofSection";
 import WhatToExpect from "@/components/WhatToExpect";
-import ThreeProblems from "@/components/ThreeProblems";
-import HowWeSolve from "@/components/HowWeSolve";
-import HowItWorks from "@/components/HowItWorks";
-import NinetyDays from "@/components/NinetyDays";
 import Footer from "@/components/Footer";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 
@@ -14,14 +10,10 @@ export default function RootPage() {
     <main>
       <AnalyticsTracker />
       <Hero />
-      <ProofSection />
       <WhoItsFor />
+      <ProofSection />
       <WhatToExpect />
-      <ThreeProblems />
-      <HowWeSolve />
-      <HowItWorks />
-      <NinetyDays />
-<Footer />
+      <Footer />
     </main>
   );
 }
