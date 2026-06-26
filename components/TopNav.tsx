@@ -12,8 +12,14 @@ export default function TopNav() {
           0%, 100% { box-shadow: 0 0 12px rgba(250,204,21,0.45), 0 0 24px rgba(250,204,21,0.2); }
           50%       { box-shadow: 0 0 20px rgba(250,204,21,0.7), 0 0 36px rgba(250,204,21,0.35); }
         }
+        @keyframes redPulse {
+          0%, 100% { box-shadow: 0 0 10px rgba(239,68,68,0.45), 0 0 20px rgba(239,68,68,0.2); }
+          50%       { box-shadow: 0 0 18px rgba(239,68,68,0.7), 0 0 32px rgba(239,68,68,0.35); }
+        }
         .proof-btn { animation: proofPulse 2.5s ease-in-out infinite; }
         .proof-btn:hover { animation: none; transform: scale(1.04); box-shadow: 0 0 24px rgba(250,204,21,0.8), 0 0 48px rgba(250,204,21,0.4) !important; }
+        .important-btn { animation: redPulse 2.5s ease-in-out infinite; }
+        .important-btn:hover { animation: none; transform: scale(1.04); box-shadow: 0 0 24px rgba(239,68,68,0.8), 0 0 48px rgba(239,68,68,0.4) !important; }
       `}</style>
       <header
         className="sticky top-0 z-50 w-full flex justify-center px-4 py-3"
@@ -35,6 +41,17 @@ export default function TopNav() {
             }}
           >
             ✦ Proof It Works
+          </button>
+
+          {/* Important — red pulsing */}
+          <button
+            onClick={() => scrollTo("final-note")}
+            className="important-btn px-4 py-2.5 rounded-lg text-sm font-black text-white transition-transform duration-200 active:scale-[0.97]"
+            style={{
+              background: "linear-gradient(135deg, #DC2626 0%, #B91C1C 100%)",
+            }}
+          >
+            ⚠ Important
           </button>
 
           {/* 6/10 — indigo-to-purple gradient, white text readable */}

@@ -208,6 +208,7 @@ export default function WhatToExpect() {
 
         {/* Final Note — urgency */}
         <div
+          id="final-note"
           className="rounded-xl p-6"
           style={{
             background: "linear-gradient(135deg, #2D0A0A 0%, #1A0606 50%, #1F0C0C 100%)",
