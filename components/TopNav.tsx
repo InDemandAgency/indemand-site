@@ -43,17 +43,6 @@ export default function TopNav() {
             ✦ Proof It Works
           </button>
 
-          {/* Important — red pulsing */}
-          <button
-            onClick={() => scrollTo("final-note")}
-            className="important-btn px-4 py-2.5 rounded-lg text-sm font-black text-white transition-transform duration-200 active:scale-[0.97]"
-            style={{
-              background: "linear-gradient(135deg, #DC2626 0%, #B91C1C 100%)",
-            }}
-          >
-            ⚠ Important
-          </button>
-
           {/* 6/10 — indigo-to-purple gradient, white text readable */}
           <button
             onClick={() => scrollTo("what-to-expect")}
@@ -64,6 +53,17 @@ export default function TopNav() {
             }}
           >
             What to Expect on the Call
+          </button>
+
+          {/* Important — red pulsing */}
+          <button
+            onClick={() => scrollTo("final-note")}
+            className="important-btn px-4 py-2.5 rounded-lg text-sm font-black text-white transition-transform duration-200 active:scale-[0.97]"
+            style={{
+              background: "linear-gradient(135deg, #DC2626 0%, #B91C1C 100%)",
+            }}
+          >
+            ⚠ Important
           </button>
         </nav>
       </header>
