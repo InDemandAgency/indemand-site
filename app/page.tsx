@@ -1,3 +1,4 @@
+import TopNav from "@/components/TopNav";
 import Hero from "@/components/Hero";
 import WhoItsFor from "@/components/WhoItsFor";
 import ProofSection from "@/components/ProofSection";
@@ -9,6 +10,7 @@ export default function RootPage() {
   return (
     <main>
       <AnalyticsTracker />
+      <TopNav />
       <Hero />
       <WhoItsFor />
       <ProofSection />

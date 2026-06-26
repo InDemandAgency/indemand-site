@@ -15,7 +15,7 @@ const testimonialImages = [
 
 export default function ProofSection() {
   return (
-    <section className="bg-primary py-20 md:py-28">
+    <section id="proof" className="bg-primary py-20 md:py-28">
       <div className="max-w-5xl mx-auto px-6 md:px-12">
         {/* Transition */}
         <div className="border-l-4 border-accent pl-5 mb-14" data-animate data-delay="100">

@@ -26,7 +26,7 @@ const goals = [
 
 export default function WhatToExpect() {
   return (
-    <section className="bg-primary py-16 md:py-24">
+    <section id="what-to-expect" className="bg-primary py-16 md:py-24">
       <div className="max-w-2xl mx-auto px-5 md:px-8">
 
         {/* Section label */}
