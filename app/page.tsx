@@ -14,9 +14,9 @@ export default function RootPage() {
     <main>
       <AnalyticsTracker />
       <Hero />
+      <ProofSection />
       <WhoItsFor />
       <WhatToExpect />
-      <ProofSection />
       <ThreeProblems />
       <HowWeSolve />
       <HowItWorks />
