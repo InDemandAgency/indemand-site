@@ -19,17 +19,20 @@ export default function TopNav() {
       <nav className="flex items-center gap-3">
         <button
           onClick={() => scrollTo("proof")}
-          className="px-4 py-2 rounded-lg text-sm font-bold text-white border border-border-subtle transition-all duration-200 hover:border-accent hover:text-accent"
-          style={{ background: "rgba(255,255,255,0.04)" }}
+          className="px-4 py-2 rounded-lg text-sm font-bold text-white transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+          style={{
+            background: "linear-gradient(135deg, #4ADE80 0%, #00D4FF 100%)",
+            boxShadow: "0 0 18px rgba(74,222,128,0.4), 0 0 32px rgba(0,212,255,0.2)",
+          }}
         >
           Proof It Works
         </button>
         <button
           onClick={() => scrollTo("what-to-expect")}
-          className="px-4 py-2 rounded-lg text-sm font-bold text-primary transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+          className="px-4 py-2 rounded-lg text-sm font-bold text-white transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
           style={{
-            background: "#00D4FF",
-            boxShadow: "0 0 16px rgba(0,212,255,0.35)",
+            background: "linear-gradient(135deg, #00D4FF 0%, #A855F7 100%)",
+            boxShadow: "0 0 18px rgba(0,212,255,0.4), 0 0 32px rgba(168,85,247,0.2)",
           }}
         >
           What to Expect on the Call
