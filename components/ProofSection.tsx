@@ -19,10 +19,10 @@ export default function ProofSection() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12">
         {/* Transition */}
         <div className="border-l-4 border-accent pl-3 sm:pl-5 mb-3 sm:mb-14" data-animate data-delay="100">
-          <p className="text-accent font-bold text-sm sm:text-xl md:text-2xl mb-0.5">
+          <p className="text-accent font-bold text-base sm:text-xl md:text-2xl mb-0.5">
             So what makes us different?
           </p>
-          <p className="text-text-muted text-xs sm:text-base">
+          <p className="text-text-muted text-sm sm:text-base">
             Talk is cheap. We&apos;ll let the results speak for themselves.
           </p>
         </div>

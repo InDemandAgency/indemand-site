@@ -42,11 +42,11 @@ export default function Hero() {
 
         {/* Headline */}
         <div className="text-center max-w-xl mb-5 sm:mb-14">
-          <h1 className="text-2xl sm:text-4xl font-black text-white leading-tight mb-2 sm:mb-3">
+          <h1 className="text-lg sm:text-4xl font-black text-white leading-tight mb-1 sm:mb-3">
             While you wait — find out exactly{" "}
             <span className="text-accent">what you&apos;re leaving behind.</span>
           </h1>
-          <p className="text-text-muted text-base sm:text-lg">
+          <p className="text-text-muted text-xs sm:text-lg">
             Plug in your real numbers. This takes 30 seconds.
           </p>
         </div>
