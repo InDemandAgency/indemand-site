@@ -22,7 +22,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center px-4 pt-6 pb-6 sm:pt-12 sm:pb-20 md:pt-16 md:px-8">
+      <div className="relative z-10 flex flex-col items-center px-4 pt-6 pb-2 sm:pt-12 sm:pb-20 md:pt-16 md:px-8">
         {/* Badge */}
         <div
           className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border mb-4 sm:mb-8"
