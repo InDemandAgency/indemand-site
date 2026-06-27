@@ -15,10 +15,10 @@ const testimonialImages = [
 
 export default function ProofSection() {
   return (
-    <section id="proof" className="bg-primary py-20 md:py-28">
+    <section id="proof" className="bg-primary py-10 md:py-28">
       <div className="max-w-5xl mx-auto px-6 md:px-12">
         {/* Transition */}
-        <div className="border-l-4 border-accent pl-5 mb-14" data-animate data-delay="100">
+        <div className="border-l-4 border-accent pl-5 mb-6 sm:mb-14" data-animate data-delay="100">
           <p className="text-accent font-bold text-xl md:text-2xl mb-1">
             So what makes us different?
           </p>
@@ -28,7 +28,7 @@ export default function ProofSection() {
         </div>
 
         {/* Video testimonials */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-14 max-w-2xl mx-auto" data-animate data-delay="100">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-6 sm:mb-14 max-w-2xl mx-auto" data-animate data-delay="100">
           {[
             { id: "m34seci0bu", trackAs: "sp1" as const },
             { id: "lizxmjdusj", trackAs: "sp2" as const },
@@ -49,7 +49,7 @@ export default function ProofSection() {
         </div>
 
         {/* Image testimonials grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
           {testimonialImages.map((src, i) => (
             <div
               key={i}

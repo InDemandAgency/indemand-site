@@ -126,20 +126,20 @@ export default function RevenueCalculator() {
   return (
     <div className="w-full max-w-2xl mx-auto">
       {/* Header */}
-      <div className="mb-8">
-        <h2 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+      <div className="mb-4 sm:mb-8">
+        <h2 className="text-xl sm:text-3xl font-black text-white leading-tight">
           What&apos;s your business actually worth at full capacity?
         </h2>
-        <p className="mt-2 text-text-muted text-base">
+        <p className="mt-1 sm:mt-2 text-text-muted text-sm sm:text-base">
           Enter your numbers. We&apos;ll show you the gap.
         </p>
       </div>
 
-      {/* Input grid — 2×2 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+      {/* Input grid — always 2×2 */}
+      <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
         {/* Average job revenue */}
         <div>
-          <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider">
+          <label className="block text-xs sm:text-sm font-semibold text-text-muted mb-1 sm:mb-2 uppercase tracking-wider">
             Average job revenue
           </label>
           <div className="relative">
@@ -152,7 +152,7 @@ export default function RevenueCalculator() {
               step="100"
               value={inputs.avgRevenue}
               onChange={(e) => set("avgRevenue", e.target.value)}
-              className="w-full bg-bg-elevated border border-border-subtle rounded-lg pl-8 pr-4 py-3.5 text-white text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="w-full bg-bg-elevated border border-border-subtle rounded-lg pl-6 sm:pl-8 pr-2 sm:pr-4 py-2 sm:py-3.5 text-white text-sm sm:text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.3)" }}
             />
           </div>
@@ -160,7 +160,7 @@ export default function RevenueCalculator() {
 
         {/* Hours on job sites per day */}
         <div>
-          <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider">
+          <label className="block text-xs sm:text-sm font-semibold text-text-muted mb-1 sm:mb-2 uppercase tracking-wider">
             Hours on job sites per day
           </label>
           <div className="relative">
@@ -171,7 +171,7 @@ export default function RevenueCalculator() {
               step="0.5"
               value={inputs.hoursPerDay}
               onChange={(e) => set("hoursPerDay", e.target.value)}
-              className="w-full bg-bg-elevated border border-border-subtle rounded-lg pl-4 pr-16 py-3.5 text-white text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="w-full bg-bg-elevated border border-border-subtle rounded-lg pl-3 sm:pl-4 pr-10 sm:pr-16 py-2 sm:py-3.5 text-white text-sm sm:text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.3)" }}
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted font-semibold text-sm select-none">
@@ -182,7 +182,7 @@ export default function RevenueCalculator() {
 
         {/* Current jobs per week */}
         <div>
-          <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider">
+          <label className="block text-xs sm:text-sm font-semibold text-text-muted mb-1 sm:mb-2 uppercase tracking-wider">
             Current jobs / week
           </label>
           <input
@@ -191,14 +191,14 @@ export default function RevenueCalculator() {
             step="1"
             value={inputs.currentJobs}
             onChange={(e) => set("currentJobs", e.target.value)}
-            className="w-full bg-bg-elevated border border-border-subtle rounded-lg px-4 py-3.5 text-white text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="w-full bg-bg-elevated border border-border-subtle rounded-lg px-3 sm:px-4 py-2 sm:py-3.5 text-white text-sm sm:text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.3)" }}
           />
         </div>
 
         {/* Desired jobs per week */}
         <div>
-          <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider">
+          <label className="block text-xs sm:text-sm font-semibold text-text-muted mb-1 sm:mb-2 uppercase tracking-wider">
             Desired jobs / week
           </label>
           <input
@@ -207,7 +207,7 @@ export default function RevenueCalculator() {
             step="1"
             value={inputs.desiredJobs}
             onChange={(e) => set("desiredJobs", e.target.value)}
-            className="w-full bg-bg-elevated border border-border-subtle rounded-lg px-4 py-3.5 text-white text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="w-full bg-bg-elevated border border-border-subtle rounded-lg px-3 sm:px-4 py-2 sm:py-3.5 text-white text-sm sm:text-base font-semibold focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.3)" }}
           />
         </div>
@@ -215,7 +215,7 @@ export default function RevenueCalculator() {
 
       {/* Revenue with InDemand card */}
       <div
-        className="rounded-xl border border-border-subtle bg-bg-elevated p-5 mb-4 transition-all duration-300"
+        className="rounded-xl border border-border-subtle bg-bg-elevated p-3 sm:p-5 mb-2 sm:mb-4 transition-all duration-300"
         style={{
           boxShadow:
             revenueWithID !== null
@@ -228,7 +228,7 @@ export default function RevenueCalculator() {
           <span className="font-normal normal-case tracking-normal">/mo</span>
         </p>
         <p
-          className="text-3xl font-black tabular-nums transition-colors duration-300"
+          className="text-2xl sm:text-3xl font-black tabular-nums transition-colors duration-300"
           style={{ color: revenueWithID !== null ? "#00D4FF" : "#1E2A42" }}
         >
           {revenueWithID !== null ? fmt(revenueWithID) : "—"}
@@ -237,7 +237,7 @@ export default function RevenueCalculator() {
 
       {/* Hero output — Money Left on the Table */}
       <div
-        className="rounded-xl p-6 mb-4 transition-all duration-500"
+        className="rounded-xl p-3 sm:p-6 mb-2 sm:mb-4 transition-all duration-500"
         style={{
           background: allFilled
             ? "linear-gradient(135deg, #2D0A0A 0%, #1A0606 50%, #1F0C0C 100%)"
@@ -251,7 +251,7 @@ export default function RevenueCalculator() {
         }}
       >
         <p
-          className="text-xs font-bold uppercase tracking-widest mb-4 transition-colors duration-300"
+          className="text-xs font-bold uppercase tracking-widest mb-2 sm:mb-4 transition-colors duration-300"
           style={{ color: allFilled ? "#F87171" : "#1E2A42" }}
         >
           Money left on the table — every month you wait
@@ -282,7 +282,7 @@ export default function RevenueCalculator() {
           {/* Yearly — largest number on page */}
           <div>
             <p
-              className="text-4xl sm:text-5xl md:text-6xl font-black leading-none tabular-nums transition-colors duration-300"
+              className="text-3xl sm:text-5xl md:text-6xl font-black leading-none tabular-nums transition-colors duration-300"
               style={{
                 color:
                   leftYearly !== null && leftYearlyRaw! > 0
@@ -304,7 +304,7 @@ export default function RevenueCalculator() {
 
       {/* Hourly comparison card */}
       <div
-        className="rounded-xl border p-6 mb-4 transition-all duration-500"
+        className="rounded-xl border p-3 sm:p-6 mb-2 sm:mb-4 transition-all duration-500"
         style={{
           background: hourlyReady ? "#0B1628" : "#0F1729",
           borderColor: hourlyReady ? "rgba(0,212,255,0.18)" : "#1E2A42",
@@ -313,14 +313,14 @@ export default function RevenueCalculator() {
             : "0 4px 20px rgba(0,0,0,0.3)",
         }}
       >
-        <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-5">
+        <p className="text-xs font-bold uppercase tracking-widest text-text-muted mb-3 sm:mb-5">
           What every hour on a job site actually earns you
         </p>
 
         <div className="grid grid-cols-2 gap-4">
           {/* Without InDemand */}
           <div
-            className="rounded-lg p-4 border border-border-subtle"
+            className="rounded-lg p-2 sm:p-4 border border-border-subtle"
             style={{ background: "rgba(0,0,0,0.25)" }}
           >
             <p className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">

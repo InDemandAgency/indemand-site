@@ -22,7 +22,7 @@ export default function TopNav() {
         .important-btn:hover { animation: none; transform: scale(1.04); box-shadow: 0 0 24px rgba(239,68,68,0.8), 0 0 48px rgba(239,68,68,0.4) !important; }
       `}</style>
       <header
-        className="sticky top-0 z-50 w-full flex justify-center px-4 py-3"
+        className="sticky top-0 z-50 w-full flex justify-center px-2 py-2 sm:px-4 sm:py-3"
         style={{
           background: "rgba(10,15,30,0.85)",
           backdropFilter: "blur(12px)",
@@ -31,11 +31,11 @@ export default function TopNav() {
           boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
         }}
       >
-        <nav className="flex items-center gap-3">
+        <nav className="flex items-center gap-1.5 sm:gap-3 flex-nowrap w-full justify-center">
           {/* 8/10 — gold gradient, gentle pulse */}
           <button
             onClick={() => scrollTo("proof")}
-            className="proof-btn px-5 py-2.5 rounded-lg text-sm font-black text-gray-900 transition-transform duration-200 active:scale-[0.97]"
+            className="proof-btn px-2.5 py-1.5 sm:px-5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-black text-gray-900 transition-transform duration-200 active:scale-[0.97] whitespace-nowrap"
             style={{
               background: "linear-gradient(135deg, #FDE047 0%, #FACC15 50%, #F59E0B 100%)",
             }}
@@ -46,7 +46,7 @@ export default function TopNav() {
           {/* 6/10 — indigo-to-purple gradient, white text readable */}
           <button
             onClick={() => scrollTo("what-to-expect")}
-            className="px-4 py-2.5 rounded-lg text-sm font-bold text-white transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+            className="px-2.5 py-1.5 sm:px-4 sm:py-2.5 rounded-lg text-xs sm:text-sm font-bold text-white transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] whitespace-nowrap"
             style={{
               background: "linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)",
               boxShadow: "0 0 12px rgba(79,70,229,0.4), 0 0 24px rgba(124,58,237,0.2)",
@@ -58,7 +58,7 @@ export default function TopNav() {
           {/* Important — red pulsing */}
           <button
             onClick={() => scrollTo("final-note")}
-            className="important-btn px-4 py-2.5 rounded-lg text-sm font-black text-white transition-transform duration-200 active:scale-[0.97]"
+            className="important-btn px-2.5 py-1.5 sm:px-4 sm:py-2.5 rounded-lg text-xs sm:text-sm font-black text-white transition-transform duration-200 active:scale-[0.97] whitespace-nowrap"
             style={{
               background: "linear-gradient(135deg, #DC2626 0%, #B91C1C 100%)",
             }}
